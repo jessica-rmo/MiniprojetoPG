@@ -99,6 +99,15 @@ class Reta:
 # reta = Reta(ponto,vetorDiretor)
 # print(reta.equacaoParametrica())
 
+class Plano:
+	def __init__(self, ponto, vetorNormal):
+		self.ponto = ponto
+		self.vetorNormal = vetorNormal
+
+# plano = Plano(Ponto(1,1,0),Vetor(2,3,4))
+# print(plano.ponto)
+# print(plano.vetorNormal)
+
 class Esfera:
     origem = Ponto(0,0,0)
     def __init__(self, centro, raio):
