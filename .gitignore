@@ -253,5 +253,7 @@ Thumbs.db
 # profiling data
 .prof
 
+# more/other
+.idea/*
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm
