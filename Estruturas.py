@@ -76,7 +76,7 @@ class Reta:
 
     def equacaoParametrica(self):
         matrix = [["x = ",(self.ponto.x()),(self.vetorDiretor.x()),"t"],
-                  ["y = ",(self.ponto.y()),(self.vetorDiretor.y()),"t  , t percente a R"],
+                  ["y = ",(self.ponto.y()),(self.vetorDiretor.y()),"t  , t pertence a R"],
                   ["z = ",(self.ponto.z()),(self.vetorDiretor.z()),"t"]]
         forma = ""
         for line in matrix:
