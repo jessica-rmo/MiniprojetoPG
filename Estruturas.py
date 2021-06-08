@@ -1,6 +1,6 @@
 # Miniprojeto 0 - Processamento Gráfico 2020.2 CIn UFPE
 # Jessica Oliveira (jrmo@cin.ufpe.br)
-# Atualizado em 07/06/2021
+# Atualizado em 08/06/2021
 
 # Estruturas básicas
 
@@ -95,9 +95,9 @@ class Reta:
         return forma
 
 # ponto = Ponto(1,2,3)
-# vetorDiretor = Vetor(4,-5,-7)
-# reta = Reta(ponto,vetorDiretor)
-# print(reta.equacaoParametrica())
+# # vetorDiretor = Vetor(4,-5,-7)
+# # reta = Reta(ponto,vetorDiretor)
+# # print(reta.equacaoParametrica())
 
 class Plano:
 	def __init__(self, ponto, vetorNormal):
