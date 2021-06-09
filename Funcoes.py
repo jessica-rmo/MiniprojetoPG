@@ -55,6 +55,7 @@ def normalizacao(vetor):
 # Projeção vetor em reta
 # eParalelo
 # Vetor diretor
+# Componentes Ortogonais
 
 # Projeção vetor reta
 
@@ -117,8 +118,8 @@ def componenteOrtogonal(vetor, plano):
     comp = Vetor(vetor.x1 - proj.x1, vetor.x2 - proj.x2, vetor.x3 - proj.x3)
     return comp
 
-v = Vetor(-5, 1, 10)
-ponto = Ponto(1,2,3)
-vetorN = Vetor(1,-3,-2)
-plano = Plano(ponto,vetorN)
-print(componenteOrtogonal(v, plano))
+# v = Vetor(-5, 1, 10)
+# ponto = Ponto(1,2,3)
+# vetorN = Vetor(1,-3,-2)
+# plano = Plano(ponto,vetorN)
+# print(componenteOrtogonal(v, plano))
