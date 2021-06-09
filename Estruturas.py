@@ -55,9 +55,9 @@ class Segmento:
         self.ponto2 = ponto2
 
     def pontoInicial(self):
-        return ponto1
+        return self.ponto1
     def pontoFinal(self):
-        return ponto2
+        return self.ponto2
     def vetorDiretor(self):
         p = (self.ponto2 - self.ponto1)
         return Vetor(p.x(),p.y(),p.z())
@@ -94,20 +94,22 @@ class Reta:
             forma = forma
         return forma
 
-    def vetorDiretor(reta):
-        v = reta.getVetorDiretor()
-        return Vetor(v.x(), v.y(), v.z())
+    def getVetorDiretor(self):
+        return self.vetorDiretor
 
-    
+
 # ponto = Ponto(1,2,3)
 # # vetorDiretor = Vetor(4,-5,-7)
 # # reta = Reta(ponto,vetorDiretor)
 # # print(reta.equacaoParametrica())
 
 class Plano:
-	def __init__(self, ponto, vetorNormal):
-		self.ponto = ponto
-		self.vetorNormal = vetorNormal
+    def __init__(self, ponto, vetorNormal):
+	    self.ponto = ponto
+	    self.vetorNormal = vetorNormal
+
+    def getVetorNormal(self):
+        return self.vetorNormal
 
 # plano = Plano(Ponto(1,1,0),Vetor(2,3,4))
 # print(plano.ponto)
@@ -165,3 +167,4 @@ class Base:
 # v3=Vetor(0,4,-1)
 # baseB = Base(v1,v2,v3)
 # print(baseB)
+
