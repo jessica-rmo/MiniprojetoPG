@@ -111,6 +111,7 @@ class Plano:
     def getVetorNormal(self):
         return self.vetorNormal
 
+
 # plano = Plano(Ponto(1,1,0),Vetor(2,3,4))
 # print(plano.ponto)
 # print(plano.vetorNormal)
