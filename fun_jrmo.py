@@ -71,10 +71,10 @@ def intersecao(reta, plano):
         else:
             return Null
     else:
-        t = (produtoEscalar(reta.ponto,plano.vetorNormal)+d) / prodvRetaPlano
-        xp = x - (x0*t)
-        yp = y - (y0*t)
-        zp = z - (z0*t)
+        t = -((produtoEscalar(reta.ponto,plano.vetorNormal)+d) / prodvRetaPlano)
+        xp = x + (x0*t)
+        yp = y + (y0*t)
+        zp = z + (z0*t)
         return Ponto(round(xp,2),round(yp,2),round(zp,2))
 
 # plano = Plano(Ponto(-3.78,-0.56,3.44),Vetor(1,2,2))
