@@ -48,5 +48,4 @@ def saoParalelos(vetor1, vetor2):
 
 # vetor21 = main.Vetor(5, 15, 81)
 # vetor22 = main.Vetor(8, 12, 16)
-
 # print(saoParalelos(vetor21, vetor22))
