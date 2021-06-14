@@ -10,10 +10,39 @@ def formaCartesiana(plano):
     ponto_b = plano.ponto.y()
     ponto_c = plano.ponto.z()
     d = -((a*ponto_a) + (b*ponto_b) + (c*ponto_c))
-    return [a,b,c,d]
+    return [a,b,c,round(d,2)]
 
 # p = Plano(Ponto(1,1,-3),Vetor(2,3,4))
 # print(formaCartesiana(p))
+
+
+def intersecao(plano1,plano2):
+    p1 = formaCartesiana(plano1)
+    a, b, c, d = p1[0], p1[1], p1[2], p1[3]
+    p2 = formaCartesiana(plano2)
+    e, f, g, h = p2[0], p2[1], p2[2], p2[3]
+    i = round(a/e,2)
+    j = round(b/f,2)
+    k = round(c/g,2)
+    l = -round(d/h,2)
+
+    # i = round(a / 8, 2)
+    # j = round(b / -10, 2)
+    # k = round(c / -3, 2)
+    # l = -round(d / 19, 2) #concidentes
+    # l = -round(d / 15, 2) #nao conscidentes
+
+    if (saoParalelos(plano1.vetorNormal,plano2.vetorNormal)):
+        if(i==j and j==k and k==i and i==l): # coincidentes
+            return plano1
+        else: # nao coincidentes
+            return None
+    else:
+        return "doing"
+
+plano1 = Plano(Ponto(2,0,-1),Vetor(-4,5,1.5))
+plano2 = Plano(Ponto(1.04,5.71,1.2),Vetor(0.91,4.6,6))
+print(intersecao(plano1,plano2))
 
 
 def intersecao(reta, plano):
