@@ -104,5 +104,3 @@ def intersecao(reta1, reta2):
 #
 # inter = intersecao(reta1,reta2)
 # print(str(inter))
-
-
