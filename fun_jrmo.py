@@ -95,14 +95,14 @@ def intersecao(reta1, reta2):
     else: # nao existe intersecao
         return None
 
-ponto = Ponto(1, 2, 3)
-vetorDiretor = Vetor(2,4,6)
-reta1 = Reta(ponto,vetorDiretor)
-ponto2 = Ponto(-1,3,5)
-vetorDiretor = Vetor(3.4,1.8,2.2)
-reta2 = Reta(ponto2,vetorDiretor)
-
-inter = intersecao(reta1,reta2)
-print(str(inter))
+# ponto = Ponto(1, 2, 3)
+# vetorDiretor = Vetor(2,4,6)
+# reta1 = Reta(ponto,vetorDiretor)
+# ponto2 = Ponto(-1,3,5)
+# vetorDiretor = Vetor(3.4,1.8,2.2)
+# reta2 = Reta(ponto2,vetorDiretor)
+#
+# inter = intersecao(reta1,reta2)
+# print(str(inter))
 
 
