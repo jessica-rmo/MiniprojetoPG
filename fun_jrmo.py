@@ -88,21 +88,21 @@ def intersecao(reta1, reta2):
         if (saoParalelos(vdA,vdB)): # vetores diretores das 2 retas
             return reta1 #ou reta2
         else: #retornar ponto da intersecao
-            p = x + vdA.x()*t2
-            q = y + vdA.y()*t2
-            r = z + vdA.z()*t2
+            p = x + vdA.x()*t1
+            q = y + vdA.y()*t1
+            r = z + vdA.z()*t1
             return Ponto(round(p,2),round(q,2),round(r,2))
     else: # nao existe intersecao
         return None
 
-# ponto = Ponto(1, 2, 3)
-# vetorDiretor = Vetor(2,4,6)
-# reta1 = Reta(ponto,vetorDiretor)
-# ponto2 = Ponto(-1,3,5)
-# vetorDiretor = Vetor(3.4,1.8,2.2)
-# reta2 = Reta(ponto2,vetorDiretor)
-#
-# inter = intersecao(reta1,reta2)
-# print(str(inter))
+ponto = Ponto(1, 2, 3)
+vetorDiretor = Vetor(2,4,6)
+reta1 = Reta(ponto,vetorDiretor)
+ponto2 = Ponto(-1,3,5)
+vetorDiretor = Vetor(3.4,1.8,2.2)
+reta2 = Reta(ponto2,vetorDiretor)
+
+inter = intersecao(reta1,reta2)
+print(str(inter))
 
 
