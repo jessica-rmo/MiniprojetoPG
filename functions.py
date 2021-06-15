@@ -183,4 +183,3 @@ def intersecao(reta, plano):
         yp = y + (y0*t)
         zp = z + (z0*t)
         return Ponto(round(xp,2),round(yp,2),round(zp,2))
-

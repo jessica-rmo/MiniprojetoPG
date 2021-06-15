@@ -1,6 +1,6 @@
 # Miniprojeto 0 - Processamento Gráfico 2020.2 CIn UFPE
 # Jessica Oliveira (jrmo@cin.ufpe.br)
-# Atualizado em 07/06/2021
+# Atualizado em 08/06/2021
 
 # Estruturas básicas
 
@@ -55,9 +55,9 @@ class Segmento:
         self.ponto2 = ponto2
 
     def pontoInicial(self):
-        return ponto1
+        return self.ponto1
     def pontoFinal(self):
-        return ponto2
+        return self.ponto2
     def vetorDiretor(self):
         p = (self.ponto2 - self.ponto1)
         return Vetor(p.x(),p.y(),p.z())
@@ -94,10 +94,27 @@ class Reta:
             forma = forma
         return forma
 
+    def getVetorDiretor(self):
+        return self.vetorDiretor
+
+
 # ponto = Ponto(1,2,3)
-# vetorDiretor = Vetor(4,-5,-7)
-# reta = Reta(ponto,vetorDiretor)
-# print(reta.equacaoParametrica())
+# # vetorDiretor = Vetor(4,-5,-7)
+# # reta = Reta(ponto,vetorDiretor)
+# # print(reta.equacaoParametrica())
+
+class Plano:
+    def __init__(self, ponto, vetorNormal):
+	    self.ponto = ponto
+	    self.vetorNormal = vetorNormal
+
+    def getVetorNormal(self):
+        return self.vetorNormal
+
+
+# plano = Plano(Ponto(1,1,0),Vetor(2,3,4))
+# print(plano.ponto)
+# print(plano.vetorNormal)
 
 class Esfera:
     origem = Ponto(0,0,0)
