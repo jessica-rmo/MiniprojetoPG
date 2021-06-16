@@ -284,7 +284,7 @@ def intersecao(reta, plano):
         return Ponto(round(xp,2),round(yp,2),round(zp,2))
 
 
-def intersecão(reta, esfera):  # reta - esfera
+def intersecao(reta, esfera):  # reta - esfera
     pontoR = reta.ponto
     pontoE = esfera.centro
 
@@ -334,9 +334,6 @@ def intersecão(reta, esfera):  # reta - esfera
         t2 = (PEvp - math.sqrt(PEvp ** 2 - PEvv * PEpp - (raio) ** 2)) / PEvv
         pontointer2 = (x1 + (x3 * t2), (y1 + (y3 * t2)), (z1 + (z3 * t2)))
         return pontointer1, pontointer2
-
-
-# def intersecao(reta,triangulo):
 
 
 def intersecao(plano1,plano2):

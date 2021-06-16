@@ -1,7 +1,3 @@
-# Miniprojeto 0 - Processamento Gráfico 2020.2 CIn UFPE
-# Jessica Oliveira (jrmo@cin.ufpe.br)
-# Atualizado em 08/06/2021
-
 # Estruturas básicas
 
 class Ponto:
