@@ -32,11 +32,15 @@ def intersecao(plano1,plano2):
         else: # nao coincidentes
             return None
     else:
+        # Vetor diretor da reta intersecao dos planos
         vetorDiretor = produtoVetorial(plano1.vetorNormal,plano2.vetorNormal)
+
+        # Ponto que pertence a reta
         Px = 0   # Px = round(((c*h)-(g*d))/((g*a)-(c*e)),2)
         Py = round(((c*h)-(g*d))/((g*b)-(c*f)),2)
         Pz = round(((b*h)-(f*d))/((f*c)-(b*g)),2)
         ponto = Ponto(Px,Py,Pz)
+        
         reta = Reta(ponto,vetorDiretor)
         return reta
 
