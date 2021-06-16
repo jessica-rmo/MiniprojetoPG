@@ -1,6 +1,6 @@
 # Funcoes
 from Estruturas import *
-from fun import *
+from functions import *
 
 def formaCartesiana(plano):
     a = plano.vetorNormal.x()
@@ -26,23 +26,24 @@ def intersecao(plano1,plano2):
     k = round(c/g,2)
     l = -round(d/h,2)
 
-    # i = round(a / 8, 2)
-    # j = round(b / -10, 2)
-    # k = round(c / -3, 2)
-    # l = -round(d / 19, 2) #concidentes
-    # l = -round(d / 15, 2) #nao conscidentes
-
     if (saoParalelos(plano1.vetorNormal,plano2.vetorNormal)):
         if(i==j and j==k and k==i and i==l): # coincidentes
             return plano1
         else: # nao coincidentes
             return None
     else:
-        return "doing"
+        vetorDiretor = produtoVetorial(plano1.vetorNormal,plano2.vetorNormal)
+        Px = 0   # Px = round(((c*h)-(g*d))/((g*a)-(c*e)),2)
+        Py = round(((c*h)-(g*d))/((g*b)-(c*f)),2)
+        Pz = round(((b*h)-(f*d))/((f*c)-(b*g)),2)
+        ponto = Ponto(Px,Py,Pz)
+        reta = Reta(ponto,vetorDiretor)
+        return reta
 
-plano1 = Plano(Ponto(2,0,-1),Vetor(-4,5,1.5))
-plano2 = Plano(Ponto(1.04,5.71,1.2),Vetor(0.91,4.6,6))
-print(intersecao(plano1,plano2))
+# plano1 = Plano(Ponto(2,0,-1),Vetor(-4,5,1.5))
+# plano2 = Plano(Ponto(1.04,5.71,1.2),Vetor(0.91,4.6,6))
+# inter = (intersecao(plano1,plano2))
+# print(inter.equacaoParametrica())
 
 
 def intersecao(reta, plano):
