@@ -1,7 +1,7 @@
 from math import *
 from Estruturas import *
 
-# Ferramentas Básicas
+# Funções Básicas
 
 def produtoEscalar(vetor1, vetor2):
     x1 = vetor1.x1
@@ -42,6 +42,31 @@ def produtoVetorial(vetor1, vetor2):
     k = (vetor1.x1 * vetor2.x2) - (vetor1.x2 * vetor2.x1)
     return Vetor(i, j, k)
 
+def reflexao(vetor1, vetor2):
+    x1 = vetor1.x1
+    x2 = vetor2.x1
+
+    y1 = vetor1.x2
+    y2 = vetor2.x2
+
+    z1 = vetor1.x3
+    z2 = vetor2.x3
+    # Reflexao na origem:
+    if (x2 == 0 and y2 == 0 and z2 == 0):
+        return Estruturas.Vetor(x1 * -1, y1 * -1, z1 * -1)
+    # reflexao x2=y2=z2
+    elif (x2 == y2 and y2 == z2):
+        return Estruturas.Vetor(y1, x1, z1)
+    # reflexao y2 == 0
+    elif (y2 == 0):
+        return Estruturas.Vetor(x1 * -1, y1, z1)
+    # reflexao x2 == 0
+    elif (x2 == 0):
+        return Estruturas.Vetor(x1, y1 * -1, z1)
+    else:
+        return Estruturas.Vetor(x1, y1, z1)
+
+
 def saoParalelos(vetor1, vetor2):
     x = vetor1.x1/vetor2.x1
     y = vetor1.x2/vetor2.x2
@@ -49,8 +74,40 @@ def saoParalelos(vetor1, vetor2):
 
     if(x == y and x == z and y == z):
         return True
-    
     return False
+
+def saoOrtogonais(vetor1, vetor2):
+    x = fun.produtoEscalar(vetor1, vetor2)
+    if (x == 0):
+        return True
+    else:
+        return False
+
+def eLI(array):
+    vetor1 = array[0]
+    vetor2 = array[1]
+    vetor3 = array[2]
+
+    x1 = vetor1.x1
+    x2 = vetor2.x1
+    x3 = vetor3.x1
+
+    y1 = vetor1.x2
+    y2 = vetor2.x2
+    y3 = vetor3.x2
+
+    z1 = vetor1.x3
+    z2 = vetor2.x3
+    z3 = vetor3.x3
+
+    aux = ((x1 * y2 * z3) + (y1 * z2 * x3) + (z1 * x2 * y3) + (-1 * ((x3 * y2 * z1) + (y3 * z2 * x1) + (z3 * x2 * y1))))
+
+    if (aux != 0):
+        return True
+
+    else:
+        return False
+
 
 # Objetos
 
@@ -105,6 +162,46 @@ def componenteOrtogonal(vetor, plano):
     comp = Vetor(vetor.x1 - proj.x1, vetor.x2 - proj.x2, vetor.x3 - proj.x3)
     return comp
 
+def saoComplementosOrtogonais(reta, plano):
+    vetorDiretor = reta.vetorDiretor
+    normalplano = plano.vetorNormal
+
+    x1 = vetorDiretor.x1
+    x2 = normalplano.x1
+
+    y1 = vetorDiretor.x2
+    y2 = normalplano.x2
+
+    z1 = vetorDiretor.x3
+    z2 = normalplano.x3
+    if (x1 == 0 and y1 == 0 and z1 == 0 or x2 == 0 and y2 == 0 and z2 == 0):
+        return True
+    elif (x1 / x2 == y1 / y2 and y1 / y2 == z1 / z2):
+        return True
+    else:
+        return False
+
+
+def saoComplementosOrtogonais(plano, reta):
+    vetorDiretor = reta.vetorDiretor
+    normalplano = plano.vetorNormal
+
+    x1 = vetorDiretor.x1
+    x2 = normalplano.x1
+
+    y1 = vetorDiretor.x2
+    y2 = normalplano.x2
+
+    z1 = vetorDiretor.x3
+    z2 = normalplano.x3
+    if (x1 == 0 and y1 == 0 and z1 == 0 or x2 == 0 and y2 == 0 and z2 == 0):
+        return True
+    elif (x2 / x1 == y2 / y1 and y2 / y1 == z2 / z1):
+        return True
+    else:
+        return False
+
+
 def formaCartesiana(plano):
     a = plano.vetorNormal.x()
     b = plano.vetorNormal.y()
@@ -129,6 +226,7 @@ def formaCartesiana(reta):
 
     return [[round(y0/x0,2), -1,  0, round(b-((a*y0)/x0),2)],
             [round(z0/x0,2),  0, -1, round(c-((a*z0)/x0),2)] ]
+
 
 # Interseções
 
@@ -162,6 +260,7 @@ def intersecao(reta1, reta2):
     else: # nao existe intersecao
         return None
 
+
 def intersecao(reta, plano):
     coef = formaCartesiana(plano)
     a, b, c, d = coef[0], coef[1], coef[2], coef[3]
@@ -183,3 +282,88 @@ def intersecao(reta, plano):
         yp = y + (y0*t)
         zp = z + (z0*t)
         return Ponto(round(xp,2),round(yp,2),round(zp,2))
+
+
+def intersecão(reta, esfera):  # reta - esfera
+    pontoR = reta.ponto
+    pontoE = esfera.centro
+
+    x1 = pontoR.x1
+    x2 = pontoE.x1
+
+    y1 = pontoR.x2
+    y2 = pontoE.x2
+
+    z1 = pontoR.x3
+    z2 = pontoE.x3
+
+    vetorPC = Estruturas.Vetor(x2 - x1, y2 - y1, z2 - z1)
+    vetordiretorR = reta.vetorDiretor
+    # precisamos fazer a projecao de vetorPC em vetor diretor da reta
+    n1 = fun.produtoEscalar(vetorPC, vetordiretorR)
+    n2 = fun.produtoEscalar(vetordiretorR, vetordiretorR)
+    proj = n1 / n2
+    vetor = Estruturas.Vetor(proj * (vetordiretorR.x1), proj * (vetordiretorR.x2), proj * vetordiretorR.x3)
+    vetorProjecao = vetor
+
+    # procurando o cateto oposto D
+    D = math.sqrt(fun.norma(vetorPC) ** 2 - fun.norma(vetorProjecao) ** 2)
+    # sabendo que o raio eh dado por:
+    raio = esfera.raio
+    # separando os valores de X Y Z do vetor diretor:
+    x3 = vetordiretorR.x1
+    y3 = vetordiretorR.x2
+    z3 = vetordiretorR.x3
+    # separando as possibilidades
+    #pegando os produtos escalar
+    PEvv = fun.produtoEscalar(vetordiretorR, vetordiretorR)
+    PEpp = fun.produtoEscalar(vetorPC, vetorPC)
+    PEvp = fun.produtoEscalar(vetordiretorR, vetorPC)
+    if (D == raio):
+        # uma intersecao
+        t = PEvp / PEvv
+        pontointer = (x1 + (x3 * t), (y1 + (y3 * t)), (z1 + (z3 * t)))
+        return pontointer
+
+    elif (D < raio):
+        # duas intersecoes
+        # primeiro ponto
+        t1 = (PEvp + math.sqrt(PEvp**2-PEvv*PEpp-(raio)**2))/PEvv
+        pontointer1 = (x1 + (x3 * t1), (y1 + (y3 * t1)), (z1 + (z3 * t1)))
+        # segundo ponto
+        t2 = (PEvp - math.sqrt(PEvp ** 2 - PEvv * PEpp - (raio) ** 2)) / PEvv
+        pontointer2 = (x1 + (x3 * t2), (y1 + (y3 * t2)), (z1 + (z3 * t2)))
+        return pontointer1, pontointer2
+
+
+# def intersecao(reta,triangulo):
+
+
+def intersecao(plano1,plano2):
+    p1 = formaCartesiana(plano1)
+    a, b, c, d = p1[0], p1[1], p1[2], p1[3]
+    p2 = formaCartesiana(plano2)
+    e, f, g, h = p2[0], p2[1], p2[2], p2[3]
+    i = round(a/e,2)
+    j = round(b/f,2)
+    k = round(c/g,2)
+    l = -round(d/h,2)
+
+    if (saoParalelos(plano1.vetorNormal,plano2.vetorNormal)):
+        if(i==j and j==k and k==i and i==l): # coincidentes
+            return plano1
+        else: # nao coincidentes
+            return None
+    else:
+        # Vetor diretor da reta intersecao dos planos
+        vetorDiretor = produtoVetorial(plano1.vetorNormal,plano2.vetorNormal)
+
+        # Ponto que pertence a reta
+        Px = 0   # Px = round(((c*h)-(g*d))/((g*a)-(c*e)),2)
+        Py = round(((c*h)-(g*d))/((g*b)-(c*f)),2)
+        Pz = round(((b*h)-(f*d))/((f*c)-(b*g)),2)
+        ponto = Ponto(Px,Py,Pz)
+
+        reta = Reta(ponto,vetorDiretor)
+        return reta
+
